@@ -9,4 +9,7 @@
     .container {
         @apply max-w-[1112px] mx-auto px-4
     }
+    .footer-icons{
+        @apply dark:text-white flex items-center border border-borders dark:border-white p-4 rounded-lg justify-center
+    }
 }
