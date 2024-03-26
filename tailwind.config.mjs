@@ -5,11 +5,12 @@ export default {
 		colors: {
 			primary: '#31E981',
 			secondary: '#150578',
-			midnight: '#00120B',
+			midnight: '#020214',
 			white: '#F5F1ED',
 			borders: '#6B818C'
 		},
 		extend: {},
 	},
+	darkMode: ["class", '[data-theme="dark"]'],
 	plugins: [],
 }

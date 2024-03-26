@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    body {
+        @apply bg-white dark:bg-midnight
+    }
+    .container {
+        @apply max-w-[1112px] mx-auto px-4
+    }
+}
