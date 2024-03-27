@@ -1,9 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import NavBar from '../components/Navbar.astro'
+import {info} from '../data/info.js'
+
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+
 ---
 
 <Layout title="Poncho Ramos|Frontend Developer">
-
+    <Hero />
+    <Experience title="EXPERIENCE" details={info.experience}/>
+    <Experience title="EDUCATION" details={info.education}/>
 </Layout>
+<script>
+    import {info} from '../data/info'
+
+    console.log(info.education)
+</script>

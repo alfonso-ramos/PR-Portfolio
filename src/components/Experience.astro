@@ -1,0 +1,20 @@
+---
+const {title, details} = Astro.props
+---
+
+<section class="flex items-start justify-between md:flex-col dark:text-white">
+    <h2 class="w-[15rem] mt-16">{title}</h2>
+    <div class="w-full">
+        {
+            details.map((detail: any) => {
+                <div class="my-16">
+                    <div class="flex justify-between items-center flex-wrap">
+                        <h3 class="text-xl font-semibold">{detail.name}</h3>
+                        <p> Aqui van las fechas (tal vez)</p>
+                        <p>{detail.description}</p>
+                    </div>
+                </div>
+            })
+        }
+    </div>
+</section>
