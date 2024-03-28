@@ -5,6 +5,14 @@ import {info} from '../data/info.js'
 
 import Hero from '../components/Hero.astro';
 import Experience from '../components/Experience.astro';
+import ProjectsContainer from '../components/ProjectsContainer.astro';
+
+const featuredProjects = info.projects.reduce((accumulator, project) => {
+    if (accumulator.length < 6 && project.isFeatured) {
+        accumulator.push(project)
+    }
+    return accumulator
+}, [])
 
 ---
 
@@ -12,9 +20,19 @@ import Experience from '../components/Experience.astro';
     <Hero />
     <Experience title="EXPERIENCE" details={info.experience}/>
     <Experience title="EDUCATION" details={info.education}/>
+    <section>
+        <h2 class="w-[15rem] dark:text-white mt-16">
+            FEATURED PROJECTS
+        </h2>
+        <ProjectsContainer projects={featuredProjects}/>
+    </section>
 </Layout>
+
+
 <script>
     import {info} from '../data/info'
 
-    console.log(info.education)
+    console.log(info.projects)
+
+
 </script>

@@ -27,5 +27,14 @@ export const info = {
             location: 'CISCO NetAcad Web',
             description: 'hola',
         },
+    ],
+    projects: [
+        {
+            title: "patient manager for veterinarians",
+            isFeatured: true,
+            thumbnail: "adpinpatients.png",
+            githubUrl: "https://github.com/alfonso-ramos/admin-pacientes-vue",
+            liveUrl: "https://vaterinarianadmin.netlify.app/",
+        },
     ]
 }
