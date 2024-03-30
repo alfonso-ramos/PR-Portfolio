@@ -30,11 +30,11 @@ export const info = {
     ],
     projects: [
         {
-            title: "patient manager for veterinarians",
+            title: "Patient manager for veterinarians",
             isFeatured: true,
-            thumbnail: "adpinpatients.png",
-            githubUrl: "https://github.com/alfonso-ramos/admin-pacientes-vue",
+            thumbnail: "assets/images/adpinpatients.png",
             liveUrl: "https://vaterinarianadmin.netlify.app/",
+            githubUrl: "https://github.com/uzzii-21/astro-portfolio",
         },
     ]
 }

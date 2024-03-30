@@ -14,12 +14,13 @@ const featuredProjects = info.projects.reduce((accumulator, project) => {
     return accumulator
 }, [])
 
+
 ---
 
 <Layout title="Poncho Ramos|Frontend Developer">
     <Hero />
-    <Experience title="EXPERIENCE" details={info.experience}/>
-    <Experience title="EDUCATION" details={info.education}/>
+    <Experience title={"EXPERIENCE"} details={info.experience}/>
+    <Experience title={"EDUCATION"} details={info.education}/>
     <section>
         <h2 class="w-[15rem] dark:text-white mt-16">
             FEATURED PROJECTS
@@ -27,12 +28,3 @@ const featuredProjects = info.projects.reduce((accumulator, project) => {
         <ProjectsContainer projects={featuredProjects}/>
     </section>
 </Layout>
-
-
-<script>
-    import {info} from '../data/info'
-
-    console.log(info.projects)
-
-
-</script>
