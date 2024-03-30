@@ -34,7 +34,7 @@ export const info = {
             isFeatured: true,
             thumbnail: "assets/images/adpinpatients.png",
             liveUrl: "https://vaterinarianadmin.netlify.app/",
-            githubUrl: "https://github.com/uzzii-21/astro-portfolio",
+            githubUrl: "https://github.com/alfonso-ramos/admin-pacientes-vue",
         },
     ]
 }

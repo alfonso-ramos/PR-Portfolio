@@ -1,0 +1,15 @@
+---
+import { info } from "../data/info";
+
+import Layout from "../layouts/Layout.astro";
+
+import ProjectsContainer from "../components/ProjectsContainer.astro";
+
+const projects = info.projects.map(project => project)
+
+---
+
+<Layout title="Projects">
+    <h1 class="dark:text-white font-semibold">Projects</h1>
+    <ProjectsContainer projects={projects} />
+</Layout>
