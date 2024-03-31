@@ -13,12 +13,17 @@ const {title, details} = Astro.props
                             <h3 class="text-xl font-semibold">
                                 {detail.name}
                             </h3>
-                            <p> Aqui van las fechas</p>
-                            <p>{detail.description}</p>
+                            <p class="text-sm dark:text-gray">
+                                {detail.startDate} - {detail.endDate}
+                            </p>
                         </div>
+                        <p class="text-sm mt-3 dark:text-primary text-secondary">{detail.location}</p>
                     </div>
+                    )
                 )
-            )
-        }
+            }
     </div>
 </section>
+<!-- <p class="text-sm dark:text-gray">
+    {detail.startDate} - {detail.endDate}
+</p> -->
