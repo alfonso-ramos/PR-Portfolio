@@ -44,5 +44,26 @@ export const info = {
             liveUrl: "https://vaterinarianadmin.netlify.app/",
             githubUrl: "https://github.com/alfonso-ramos/admin-pacientes-vue",
         },
+        {
+            title: "Guitar Store Vue",
+            isFeatured: true,
+            thumbnail: "assets/images/guitarstore.png",
+            liveUrl: "https://guitarstrore.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/guitar-store-vue",
+        },
+        {
+            title: "Snacks Las Girasoles: Digital menu and Landing page",
+            isFeatured: true,
+            thumbnail: "assets/images/snacks.png",
+            liveUrl: "https://snackslasgirasoles.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/SnacksLasGirasoles-vue",
+        },
+        {
+            title: "Single Page: Design porfolio",
+            isFeatured: true,
+            thumbnail: "assets/images/designport.png",
+            liveUrl: "https://alfonso-ramos.github.io/single-page-design-portfolio/",
+            githubUrl: "https://github.com/alfonso-ramos/single-page-design-portfolio",
+        },
     ]
 }
