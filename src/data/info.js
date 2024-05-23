@@ -60,10 +60,32 @@ export const info = {
         },
         {
             title: "Single Page: Design porfolio",
-            isFeatured: true,
+            isFeatured: false,
             thumbnail: "/assets/images/designport.png",
             liveUrl: "https://alfonso-ramos.github.io/single-page-design-portfolio/",
             githubUrl: "https://github.com/alfonso-ramos/single-page-design-portfolio",
+        },
+        //todo agregando nuevos proyectos
+        {
+            title: "Contador de calorias",
+            isFeatured: true,
+            thumbnail: "/assets/images/caloriecounter.png",
+            liveUrl: "https://contadorcaloriasapp.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/contadorCalorias-RTS",
+        },
+        {
+            title: "Calculadora de propinas",
+            isFeatured: true,
+            thumbnail: "/assets/images/calctips.png",
+            liveUrl: "https://calc-tips-rts.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/CalcTips-RTS",
+        },
+        {
+            title: "Control de gastos",
+            isFeatured: true,
+            thumbnail: "/assets/images/expenseMan.png",
+            liveUrl: "https://expenses-manager-rts.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/control-gastos-RTS",
         },
     ]
 }
