@@ -55,7 +55,7 @@ export const info = {
             title: "Snacks Las Girasoles: Digital menu and Landing page",
             isFeatured: true,
             thumbnail: "/assets/images/snacks.png",
-            liveUrl: "https://snackslasgirasoles.netlify.app/",
+            liveUrl: "https://snacksgirasoles.netlify.app/",
             githubUrl: "https://github.com/alfonso-ramos/SnacksLasGirasoles-vue",
         },
         {
