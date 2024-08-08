@@ -53,7 +53,7 @@ export const info = {
         },
         {
             title: "Snacks Las Girasoles: Digital menu and Landing page",
-            isFeatured: true,
+            isFeatured: false,
             thumbnail: "/assets/images/snacks.png",
             liveUrl: "https://snacksgirasoles.netlify.app/",
             githubUrl: "https://github.com/alfonso-ramos/SnacksLasGirasoles-vue",
@@ -65,7 +65,6 @@ export const info = {
             liveUrl: "https://alfonso-ramos.github.io/single-page-design-portfolio/",
             githubUrl: "https://github.com/alfonso-ramos/single-page-design-portfolio",
         },
-        //todo agregando nuevos proyectos
         {
             title: "Contador de calorias",
             isFeatured: true,
@@ -86,6 +85,13 @@ export const info = {
             thumbnail: "/assets/images/expenseMan.png",
             liveUrl: "https://expenses-manager-rts.netlify.app/",
             githubUrl: "https://github.com/alfonso-ramos/control-gastos-RTS",
+        },
+        {
+            title: "GitHub User Finder",
+            isFeatured: true,
+            thumbnail: "/assets/images/githubuser.png",
+            liveUrl: "https://github-users-search-rts.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/github-user-search",
         },
     ]
 }
