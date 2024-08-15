@@ -46,10 +46,17 @@ export const info = {
         },
         {
             title: "Guitar Store Vue",
-            isFeatured: true,
+            isFeatured: false,
             thumbnail: "/assets/images/guitarstore.png",
             liveUrl: "https://guitarstrore.netlify.app/",
             githubUrl: "https://github.com/alfonso-ramos/guitar-store-vue",
+        },
+        {
+            title: "Dictionary App",
+            isFeatured: true,
+            thumbnail: "/assets/images/dictionaryApp.png",
+            liveUrl: "https://dictionaryapprts.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/dictionaryApp-RTS",
         },
         {
             title: "Snacks Las Girasoles: Digital menu and Landing page",
