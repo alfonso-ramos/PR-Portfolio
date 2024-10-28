@@ -66,6 +66,13 @@ export const info = {
             githubUrl: "https://github.com/alfonso-ramos/SnacksLasGirasoles-vue",
         },
         {
+            title: "Cryptocurrency Quoter",
+            isFeatured: true,
+            thumbnail: "/assets/images/cryptoquoter.jpeg",
+            liveUrl: "https://pr-cryptocurrency-quoter.netlify.app/",
+            githubUrl: "https://github.com/alfonso-ramos/cryptocurrency-quoter-vue",
+        },
+        {
             title: "Single Page: Design porfolio",
             isFeatured: false,
             thumbnail: "/assets/images/designport.png",
