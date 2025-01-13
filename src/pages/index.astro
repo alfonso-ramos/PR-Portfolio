@@ -4,7 +4,6 @@ import Layout from '../layouts/Layout.astro';
 import {info} from '../data/info.js'
 
 import Hero from '../components/Hero.astro';
-import Experience from '../components/Experience.astro';
 import ProjectsContainer from '../components/ProjectsContainer.astro';
 
 const featuredProjects = info.projects.reduce((accumulator, project) => {
@@ -19,8 +18,6 @@ const featuredProjects = info.projects.reduce((accumulator, project) => {
 
 <Layout title="Poncho Ramos|Frontend Developer">
     <Hero />
-    <Experience title={"EXPERIENCE"} details={info.experience}/>
-    <Experience title={"EDUCATION"} details={info.education}/>
     <section>
         <h2 class="w-[15rem] dark:text-white mt-16">
             FEATURED PROJECTS

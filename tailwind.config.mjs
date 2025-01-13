@@ -4,10 +4,10 @@ export default {
 	theme: {
 		colors: {
 			primary: '#31E981',
-			secondary: '#150578',
-			midnight: '#020214',
-			white: '#F5F1ED',
-			borders: '#6B818C'
+			secondary: '#3083DC',
+			midnight: '#141414',
+			white: '#F9F9F9',
+			borders: '#686963'
 		},
 		extend: {},
 	},

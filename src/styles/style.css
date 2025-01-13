@@ -22,6 +22,6 @@
     }
 
     .footer-icons {
-        @apply dark:text-white flex items-center border border-borders dark:border-white p-4 rounded-lg justify-center
+        @apply dark:text-white flex items-center border border-borders dark:border-white p-4 rounded-lg justify-center hover:scale-125 transition ease-in-out hover:bg-borders text-midnight
     }
 }
