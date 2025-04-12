@@ -36,6 +36,12 @@ export const info = {
 
         },
     ],
+    workingProject: {
+        title: "Aprende Coreano",
+        thumbnail: "/assets/images/learn-korean.png",
+        liveUrl: "https://learn-korean.netlify.app/",
+        githubUrl: "https://github.com/alfonso-ramos/learn-korean",
+    },
     projects: [
         {
             title: "Patient manager for veterinarians",

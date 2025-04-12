@@ -5,6 +5,7 @@ import {info} from '../data/info.js'
 
 import Hero from '../components/Hero.astro';
 import ProjectsContainer from '../components/ProjectsContainer.astro';
+import WorkingProject from '../components/WorkingProject.astro';
 
 const featuredProjects = info.projects.reduce((accumulator, project) => {
     if (accumulator.length < 6 && project.isFeatured) {
@@ -13,11 +14,12 @@ const featuredProjects = info.projects.reduce((accumulator, project) => {
     return accumulator
 }, [])
 
-
+const workingProject = info.workingProject;
 ---
 
 <Layout title="Poncho Ramos|Frontend Developer">
     <Hero />
+    <WorkingProject workingProject={workingProject}/>
     <section>
         <h2 class="w-[15rem] dark:text-white mt-16">
             FEATURED PROJECTS
