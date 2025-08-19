@@ -1,26 +1,73 @@
 ---
 interface Props {
-	title: string;
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+  image?: string;
+  type?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  description = SITE.description, 
+  canonicalUrl = SITE.siteUrl + Astro.url.pathname,
+  image = '/images/og-default.jpg',
+  type = 'website'
+} = Astro.props;
 
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { SITE, SCHEMA_DATA } from '../config/site';
+import "../styles/style.css";
 
-import "../styles/style.css"
+// Actualizar la URL en los datos estructurados
+const schema = {
+  ...SCHEMA_DATA,
+  url: canonicalUrl,
+  description: description
+};
+
+// Generar URL canónica completa
+const fullImageUrl = image.startsWith('http') ? image : `${SITE.siteUrl}${image}`;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#00120B" />
-		<title>{title}</title>
+<html lang="es" class="dark">
+  <head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#00120B" />
+    
+    <!-- Título -->
+    <title>{`${title} | ${SITE.title}`}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- URL canónica -->
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:locale" content="es_MX" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImageUrl} />
+    <meta name="twitter:site" content={SITE.socials.twitter} />
+    
+    <!-- Datos estructurados -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 	</head>
 	<body class="container">
 		<Navbar />

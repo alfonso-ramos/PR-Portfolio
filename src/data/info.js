@@ -41,14 +41,21 @@ export const info = {
         thumbnail: "/assets/images/learn-korean.png",
         liveUrl: "https://learn-korean.netlify.app/",
         githubUrl: "https://github.com/alfonso-ramos/learn-korean",
+        description: "Aplicación web interactiva para aprender vocabulario coreano con ejercicios prácticos y seguimiento de progreso.",
+        date: "2023-06-15",
+        technologies: ["React", "Tailwind CSS", "Firebase", "i18next"],
+        isFeatured: true
     },
     projects: [
         {
-            title: "Patient manager for veterinarians",
+            title: "Sistema de Gestión Veterinaria",
+            description: "Plataforma completa para la gestión de pacientes y citas en clínicas veterinarias.",
             isFeatured: true,
             thumbnail: "/assets/images/adpinpatients.png",
             liveUrl: "https://vaterinarianadmin.netlify.app/",
             githubUrl: "https://github.com/alfonso-ramos/admin-pacientes-vue",
+            date: "2023-09-10",
+            technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"]
         },
         {
             title: "Guitar Store Vue",

@@ -1,6 +1,44 @@
 ---
 import { Image } from 'astro:assets';
-const { title, thumbnail, liveUrl, githubUrl } = Astro.props
+
+interface ProjectProps {
+  title: string;
+  thumbnail: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  description?: string;
+  date?: string;
+}
+
+const { 
+  title, 
+  thumbnail, 
+  liveUrl, 
+  githubUrl, 
+  description = '',
+  date
+} = Astro.props as ProjectProps;
+
+// Generar un texto alternativo descriptivo para la imagen
+const altText = description 
+  ? `Captura de pantalla del proyecto ${title}: ${description}`
+  : `Captura de pantalla del proyecto ${title}`;
+
+// Formatear la fecha si existe
+const formatDate = (dateString?: string) => {
+  if (!dateString) return '';
+  
+  try {
+    const options: Intl.DateTimeFormatOptions = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    return new Date(dateString).toLocaleDateString('es-MX', options);
+  } catch (e) {
+    return dateString;
+  }
+};
 ---
 
 <article class="w-full max-h-[25rem] overflow-hidden relative group">
@@ -9,9 +47,10 @@ const { title, thumbnail, liveUrl, githubUrl } = Astro.props
         githubUrl && (
             <a
             href={githubUrl}
-            class="text-white p-3 bg-midnight/50 rounded-full backdrop-blur-md"
-            aria-label="Social Media"
+            class="text-white p-3 bg-midnight/50 rounded-full backdrop-blur-md hover:bg-midnight/70 transition-colors duration-200"
+            aria-label={`Ver código fuente de ${title} en GitHub`}
             target="_blank"
+            rel="noopener noreferrer"
             >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +74,10 @@ const { title, thumbnail, liveUrl, githubUrl } = Astro.props
         liveUrl && (
             <a
             href={liveUrl}
-            class="text-white p-3 bg-midnight/50 rounded-full backdrop-blur-md ml-1"
-            aria-label="Social Media"
+            class="text-white p-3 bg-midnight/50 rounded-full backdrop-blur-md ml-1 hover:bg-midnight/70 transition-colors duration-200"
+            aria-label={`Ver proyecto en vivo: ${title}`}
             target="_blank"
+            rel="noopener noreferrer"
             >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,19 +98,66 @@ const { title, thumbnail, liveUrl, githubUrl } = Astro.props
         )
         }
     </div>
-    <a href={liveUrl ? liveUrl : githubUrl} target="_blank">
+    <a 
+        href={liveUrl || githubUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label={`Ver detalles del proyecto: ${title}`}
+    >
         <Image 
             src={thumbnail}
-            class="w-full h-auto scale-100 hover:scale-110 transition duration-[1.5s]"
-
-            width="200"
-            height="200"
-            alt="featureImage"
+            class="w-full h-auto scale-100 hover:scale-105 transition-transform duration-500 ease-in-out"
+            width={600}
+            height={400}
+            alt={altText}
+            loading="lazy"
+            decoding="async"
         />
     </a>
     <div
-        class="absolute w-full bottom-0 left-0 backdrop-blur-md dark:text-white text-white bg-midnight/50 p-4 translate-y-[100%] group-hover:translate-y-0 transition duration-700"
+        class="absolute w-full bottom-0 left-0 backdrop-blur-md dark:text-white text-white bg-midnight/90 p-4 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out flex flex-col"
     >
-        <h3 class="mr-2 text-xl">{title}</h3>
+        <h3 class="text-xl font-bold mb-1">{title}</h3>
+        {date && (
+            <time 
+                class="text-xs opacity-80 mb-2" 
+                datetime={new Date(date).toISOString()}
+            >
+                {formatDate(date)}
+            </time>
+        )}
+        {description && (
+            <p class="text-sm opacity-90 line-clamp-2 flex-grow">{description}</p>
+        )}
+        <div class="mt-2 flex justify-end space-x-2">
+            {githubUrl && (
+                <a 
+                    href={githubUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="text-white hover:text-primary transition-colors"
+                    aria-label={`Ver código de ${title} en GitHub`}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+            )}
+            {liveUrl && (
+                <a 
+                    href={liveUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="text-white hover:text-primary transition-colors"
+                    aria-label={`Ver ${title} en vivo`}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            )}
+        </div>
     </div>
 </article>

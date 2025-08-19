@@ -1,10 +1,38 @@
 ---
 import ProjectCard from "./ProjectCard.astro"
 
-const {projects} = Astro.props
+const { projects, sectionTitle = 'Featured projects' } = Astro.props;
+
+// Generar datos estructurados para la colección de proyectos
+const projectsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": projects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description || `Proyecto de desarrollo web: ${project.title}`,
+      "url": project.liveUrl || project.githubUrl || '#',
+      "image": project.thumbnail,
+      "creator": {
+        "@type": "Person",
+        "name": "Poncho Ramos"
+      },
+      "datePublished": project.date || new Date().toISOString().split('T')[0]
+    }
+  }))
+};
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-16">
+<section aria-labelledby="projects-heading" class="my-16">
+    <h2 id="projects-heading" class="text-3xl font-bold mb-8 dark:text-white">{sectionTitle}</h2>
+    
+    <!-- Datos estructurados para la colección de proyectos -->
+    <script type="application/ld+json" set:html={JSON.stringify(projectsSchema)} />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {
         projects.map(project => (
             <ProjectCard 
@@ -12,8 +40,10 @@ const {projects} = Astro.props
                 thumbnail={project.thumbnail}
                 liveUrl={project.liveUrl}
                 githubUrl={project.githubUrl}
+                description={project.description}
+                date={project.date}
             />
-            )
-        )
+        ))
     }
 </div>
+</section>

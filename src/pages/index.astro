@@ -1,23 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-import {info} from '../data/info.js'
-
+import { info } from '../data/info.js';
+import { SITE } from '../config/site';
 import Hero from '../components/Hero.astro';
 import ProjectsContainer from '../components/ProjectsContainer.astro';
 import WorkingProject from '../components/WorkingProject.astro';
 
+// Obtener proyectos destacados
 const featuredProjects = info.projects.reduce((accumulator, project) => {
     if (accumulator.length < 6 && project.isFeatured) {
-        accumulator.push(project)
+        accumulator.push(project);
     }
-    return accumulator
-}, [])
+    return accumulator;
+}, []);
 
 const workingProject = info.workingProject;
+
+// Metadatos de la página
+const pageTitle = 'Inicio';
+const pageDescription = 'Portafolio profesional de Poncho Ramos, Desarrollador Frontend especializado en tecnologías modernas. Explora mis proyectos, habilidades y experiencia en desarrollo web.';
+const pageImage = '/images/og-home.jpg';
 ---
 
-<Layout title="Poncho Ramos|Frontend Developer">
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+>
     <Hero />
     <WorkingProject workingProject={workingProject}/>
     <section>

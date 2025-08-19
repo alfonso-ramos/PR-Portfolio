@@ -1,15 +1,78 @@
 ---
 import { info } from "../data/info";
+import Layout from '../layouts/Layout.astro';
+import ProjectsContainer from '../components/ProjectsContainer.astro';
+import { SITE } from '../config/site';
 
-import Layout from "../layouts/Layout.astro";
+// Obtener todos los proyectos ordenados por fecha (más recientes primero)
+const projects = [...info.projects].sort((a, b) => {
+  const dateA = a.date ? new Date(a.date).getTime() : 0;
+  const dateB = b.date ? new Date(b.date).getTime() : 0;
+  return dateB - dateA; // Orden descendente (más reciente primero)
+});
 
-import ProjectsContainer from "../components/ProjectsContainer.astro";
+// Metadatos de la página
+const pageTitle = 'Proyectos de Desarrollo Web';
+const pageDescription = 'Explora mi portafolio de proyectos de desarrollo web. Cada proyecto refleja mi experiencia en tecnologías modernas como React, Node.js, Astro y más. Descubre soluciones creativas y funcionales que he desarrollado.';
+const pageImage = '/images/og-projects.jpg';
 
-const projects = info.projects.map(project => project)
-
+// Datos estructurados para la página de proyectos
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Portafolio de Proyectos de Desarrollo Web",
+  "description": pageDescription,
+  "url": `${SITE.siteUrl}/projects`,
+  "numberOfItems": projects.length,
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "itemListElement": projects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description || `Proyecto de desarrollo web realizado por Poncho Ramos`,
+      "url": project.liveUrl || project.githubUrl || '#',
+      "image": project.thumbnail,
+      "datePublished": project.date || new Date().toISOString().split('T')[0],
+      "programmingLanguage": project.technologies?.join(', ') || 'JavaScript, TypeScript, HTML, CSS'
+    }
+  }))
+};
 ---
 
-<Layout title="Projects">
-    <h1 class="dark:text-white font-semibold">Projects</h1>
-    <ProjectsContainer projects={projects} />
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+>
+    <main class="container mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-midnight dark:text-white mb-4">
+                My projects
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-white max-w-3xl mx-auto">
+                Explore my latest work. Each project represents a unique challenge and an opportunity to apply my skills in web development.
+            </p>
+        </header>
+
+        <!-- Datos estructurados para la página de proyectos -->
+        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-midnight dark:text-white mb-6">Featured Projects</h2>
+            <ProjectsContainer 
+                projects={projects.filter(p => p.isFeatured)} 
+                sectionTitle=""
+            />
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold text-midnight dark:text-white mb-6">Todos los Proyectos</h2>
+            <ProjectsContainer 
+                projects={projects} 
+                sectionTitle=""
+            />
+        </section>
+    </main>
 </Layout>
