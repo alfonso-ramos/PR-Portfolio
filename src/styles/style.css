@@ -7,7 +7,6 @@
         @apply bg-white dark:bg-midnight
     }
 
-
     h1 {
         @apply text-6xl sm:text-8xl;
     }
@@ -16,12 +15,19 @@
         @apply text-xl font-semibold;
     }
 
-
     .container {
         @apply max-w-[1112px] mx-auto px-4
     }
 
     .footer-icons {
-        @apply dark:text-white flex items-center border border-borders dark:border-white p-4 rounded-lg justify-center hover:scale-125 transition ease-in-out hover:bg-borders text-midnight
+        @apply dark:text-white flex items-center border border-borders dark:border-white p-4 rounded-lg justify-center hover:scale-125 transition ease-in-out hover:bg-borders/20 text-midnight
+    }
+
+    .text-glow-primary {
+        text-shadow: 0 0 10px rgba(48, 131, 220, 0.5);
+    }
+
+    .hover\:box-glow-primary:hover {
+        box-shadow: 0 0 20px rgba(48, 131, 220, 0.3);
     }
 }

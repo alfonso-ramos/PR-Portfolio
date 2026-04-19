@@ -41,7 +41,7 @@ export const info = {
         thumbnail: "/assets/images/patterkit.png",
         liveUrl: "https://patternkit.vercel.app/",
         githubUrl: "https://github.com/alfonso-ramos/patternkit",
-        description: "Website designed to teach fundamental programming and development concepts such as design patterns and data structures in a simple, interactive and centralized way",
+    description: "Website designed to teach fundamental programming and development concepts such as design patterns and data structures in a simple, interactive and centralized way",
         date: "2025-11-15",
         technologies: ["Nextjs", "Tailwind CSS", "Vercel", "MDX"],
         isFeatured: true

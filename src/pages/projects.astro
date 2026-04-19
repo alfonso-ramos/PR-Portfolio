@@ -3,6 +3,7 @@ import { info } from "../data/info";
 import Layout from '../layouts/Layout.astro';
 import ProjectsContainer from '../components/ProjectsContainer.astro';
 import { SITE } from '../config/site';
+import ProjectsPage from "./ProjectsPage";
 
 // Obtener todos los proyectos ordenados por fecha (más recientes primero)
 const projects = [...info.projects].sort((a, b) => {
@@ -46,7 +47,8 @@ const structuredData = {
   description={pageDescription}
   image={pageImage}
 >
-    <main class="container mx-auto px-4 py-12">
+  <ProjectsPage client:load/>
+    <!-- <main class="container mx-auto px-4 py-12">
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-midnight dark:text-white mb-4">
                 My projects
@@ -57,7 +59,7 @@ const structuredData = {
         </header>
 
         <!-- Datos estructurados para la página de proyectos -->
-        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+        <!-- <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
         <section class="mb-16">
             <h2 class="text-2xl font-bold text-midnight dark:text-white mb-6">Featured Projects</h2>
@@ -74,5 +76,5 @@ const structuredData = {
                 sectionTitle=""
             />
         </section>
-    </main>
+    </main> -->
 </Layout>

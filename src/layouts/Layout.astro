@@ -15,7 +15,7 @@ const {
   type = 'website'
 } = Astro.props;
 
-import Navbar from '../components/Navbar.astro';
+import Navbar from '../components/Navbar.tsx';
 import Footer from '../components/Footer.astro';
 import { SITE, SCHEMA_DATA } from '../config/site';
 import "../styles/style.css";
@@ -70,8 +70,7 @@ const fullImageUrl = image.startsWith('http') ? image : `${SITE.siteUrl}${image}
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 	</head>
 	<body class="container">
-		<Navbar />
+		<Navbar client:load />
 		<slot />
-		<Footer />
 	</body>
 </html>

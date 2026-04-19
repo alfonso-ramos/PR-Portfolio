@@ -1,11 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { info } from '../data/info.js';
-import { SITE } from '../config/site';
-import Hero from '../components/Hero.astro';
-import ProjectsContainer from '../components/ProjectsContainer.astro';
-import WorkingProject from '../components/WorkingProject.astro';
-
+import HeroSection from '../components/HeroSection';
+import ProjectsSection from '../components/ProjectsSection';
+import AboutSection from '../components/AboutSection';
+import ContactSection from '../components/ContactSection';
 // Obtener proyectos destacados
 const featuredProjects = info.projects.reduce((accumulator, project) => {
     if (accumulator.length < 6 && project.isFeatured) {
@@ -22,17 +21,13 @@ const pageDescription = 'Portafolio profesional de Poncho Ramos, Desarrollador F
 const pageImage = '/images/og-home.jpg';
 ---
 
-<Layout 
-  title={pageTitle}
-  description={pageDescription}
-  image={pageImage}
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    image={pageImage}
 >
-    <Hero />
-    <WorkingProject workingProject={workingProject}/>
-    <section>
-        <h2 class="w-[15rem] dark:text-white mt-16">
-            FEATURED PROJECTS
-        </h2>
-        <ProjectsContainer projects={featuredProjects}/>
-    </section>
+    <HeroSection client:load/>
+    <ProjectsSection client:load/>
+    <AboutSection client:load/>
+    <ContactSection client:load/>
 </Layout>

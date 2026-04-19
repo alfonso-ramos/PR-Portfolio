@@ -7,7 +7,10 @@ export default {
 			secondary: '#31E981',
 			midnight: '#141414',
 			white: '#F9F9F9',
-			borders: '#686963'
+			borders: '#686963',
+			border: '#686963',
+			background: '#F9F9F9',
+			muted: '#6B7280'
 		},
 		extend: {},
 	},
