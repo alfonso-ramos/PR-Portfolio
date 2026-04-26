@@ -8,11 +8,16 @@ export default {
 			midnight: '#141414',
 			white: '#F9F9F9',
 			borders: '#686963',
-			border: '#686963',
-			background: '#F9F9F9',
-			muted: '#6B7280'
 		},
-		extend: {},
+		extend: {
+			colors: {
+				border: 'var(--border)',
+				background: 'var(--background)',
+				foreground: 'var(--foreground)',
+				muted: 'var(--muted)',
+				'muted-foreground': 'var(--muted)'
+			}
+		},
 	},
 	darkMode: ["class", '[data-theme="dark"]'],
 	plugins: [],

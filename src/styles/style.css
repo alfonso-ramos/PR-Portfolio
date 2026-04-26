@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #F9F9F9;
+  --foreground: #141414;
+  --muted: #6B7280;
+  --border: #686963;
+}
+
+[data-theme="dark"] {
+  --background: #141414;
+  --foreground: #F9F9F9;
+  --muted: #9CA3AF;
+  --border: #686963;
+}
+
 @layer components {
     body {
-        @apply bg-white dark:bg-midnight
+        @apply bg-background text-foreground;
     }
 
     h1 {

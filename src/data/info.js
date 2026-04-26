@@ -1,4 +1,24 @@
 export const info = {
+    skills: [
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C",
+        "React",
+        "Vue.js",
+        "Node.js",
+        "Astro",
+        "Next.js",
+        "Express.js",
+        "SCRUM",
+        "Agile",
+        "SQL",
+        "MongoDB",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Git",
+        "Firebase"
+    ],
     experience: [
         {
             name: 'Hackathon: Hack the Ocean',

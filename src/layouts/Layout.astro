@@ -32,8 +32,23 @@ const fullImageUrl = image.startsWith('http') ? image : `${SITE.siteUrl}${image}
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
   <head>
+    <!-- Script de tema - se ejecuta antes del render para evitar FOUC -->
+    <script is:inline>
+      (function() {
+        const theme = (() => {
+          if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+            return localStorage.getItem("theme");
+          }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
+          return "light";
+        })();
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <!-- Metadatos básicos -->
     <meta charset="UTF-8" />
     <meta name="description" content={description} />

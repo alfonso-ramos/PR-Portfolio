@@ -1,52 +1,38 @@
 import { motion } from "framer-motion";
 import { AsciiFrame } from "./AsciiArt";
+import { info } from "../data/info";
 
-export const projects = [
-  {
-    title: "PatternKit",
-    description: "Laboratorio abierto para aprender y divulgar patrones de diseño y estructuras de datos con rigor visual.",
-    tags: ["React", "TypeScript", "Vercel"],
-    github: "https://github.com/alfonso-ramos/patternkit",
-    live: "https://patternkit.vercel.app/",
-    date: "Nov 2025",
-    ascii: `┌──────────┐
-│ ◈ PTRN ◈ │
-│  ┌──┐    │
-│  │▓▓│    │
-│  └──┘    │
-└──────────┘`,
-  },
-  {
-    title: "Aprende Coreano",
-    description: "Plataforma interactiva para aprender coreano con lecciones estructuradas y ejercicios prácticos.",
-    tags: ["React", "Netlify", "CSS"],
-    github: "https://github.com/alfonso-ramos/learn-korean",
-    live: "https://learn-korean.netlify.app/",
-    date: "2024",
-    ascii: `┌──────────┐
-│ 한 국 어  │
-│  ┌──┐    │
-│  │학│    │
-│  └──┘    │
-└──────────┘`,
-  },
-  {
-    title: "Social Media App",
-    description: "Red social fullstack con autenticación, publicaciones, y sistema de interacciones en tiempo real.",
-    tags: ["MERN", "MongoDB", "Express"],
-    github: "https://github.com/alfonso-ramos",
-    live: "#",
-    date: "2024",
-    ascii: `┌──────────┐
-│ ♦ SOCIAL │
-│  ┌┐ ┌┐   │
-│  └┘─└┘   │
-│   ◈◈◈    │
-└──────────┘`,
-  },
-];
+// export const projects = [
+//   {
+//     title: "PatternKit",
+//     description: "Laboratorio abierto para aprender y divulgar patrones de diseño y estructuras de datos con rigor visual.",
+//     tags: ["React", "TypeScript", "Vercel"],
+//     github: "https://github.com/alfonso-ramos/patternkit",
+//     live: "https://patternkit.vercel.app/",
+//     date: "Nov 2025",
+//     image: '../../public/assets/images/adpinpatients.png'
+//   },
+//   {
+//     title: "Aprende Coreano",
+//     description: "Plataforma interactiva para aprender coreano con lecciones estructuradas y ejercicios prácticos.",
+//     tags: ["React", "Netlify", "CSS"],
+//     github: "https://github.com/alfonso-ramos/learn-korean",
+//     live: "https://learn-korean.netlify.app/",
+//     date: "2024",
+//     image: '../../public/assets/images/adpinpatients.png'
+//   },
+//   {
+//     title: "Social Media App",
+//     description: "Red social fullstack con autenticación, publicaciones, y sistema de interacciones en tiempo real.",
+//     tags: ["MERN", "MongoDB", "Express"],
+//     github: "https://github.com/alfonso-ramos",
+//     live: "#",
+//     date: "2024",
+//     image: '../../public/assets/images/adpinpatients.png'
+//   },
+// ];
 
-export const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => (
+export const ProjectCard = ({ project, index }: { project: typeof info.projects[0]; index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 60 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -55,10 +41,7 @@ export const ProjectCard = ({ project, index }: { project: typeof projects[0]; i
     whileHover={{ y: -6, transition: { duration: 0.3 } }}
     className="group relative border border-border bg-card hover:border-primary/50 transition-all duration-500 p-6 hover:box-glow-primary"
   >
-    {/* ASCII art preview */}
-    <pre className="font-mono text-xs text-primary/30 group-hover:text-primary/70 transition-colors mb-4">
-      {project.ascii}
-    </pre>
+    <img src={`${project.thumbnail}`} alt="" />
 
     <div className="flex items-start justify-between mb-3">
       <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
@@ -72,7 +55,7 @@ export const ProjectCard = ({ project, index }: { project: typeof projects[0]; i
     </p>
 
     <div className="flex flex-wrap gap-2 mb-5">
-      {project.tags.map(tag => (
+      {project.technologies?.map(tag => (
         <span key={tag} className="font-mono text-xs border border-border px-3 py-1 text-muted-foreground group-hover:border-primary/30 group-hover:text-primary/80 transition-colors">
           {tag}
         </span>
@@ -81,7 +64,7 @@ export const ProjectCard = ({ project, index }: { project: typeof projects[0]; i
 
     <div className="flex gap-4 font-mono text-sm">
       <a
-        href={project.github}
+        href={project.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-primary transition-colors"
@@ -89,7 +72,7 @@ export const ProjectCard = ({ project, index }: { project: typeof projects[0]; i
         [GitHub]
       </a>
       <a
-        href={project.live}
+        href={project.liveUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground hover:text-primary transition-colors"
@@ -119,13 +102,11 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <AsciiFrame>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.slice(0, 3).map((project, i) => (
-              <ProjectCard key={project.title} project={project} index={i} />
-            ))}
-          </div>
-        </AsciiFrame>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {info.projects.map((project, i) => (
+            <ProjectCard key={project.title} project={project} index={i} />
+          ))}
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

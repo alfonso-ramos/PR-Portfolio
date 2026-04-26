@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { projects, ProjectCard } from "../components/ProjectsSection";
+import { ProjectCard } from "../components/ProjectsSection";
 import { AsciiDivider } from "../components/AsciiArt";
 import Navbar from "../components/Navbar";
+import { info } from "../data/info";
 
 const ProjectsPage = () => {
   return (
@@ -46,12 +47,12 @@ const ProjectsPage = () => {
             className="grid grid-cols-3 gap-4 mb-16 max-w-md"
           >
             <div className="border border-border p-4">
-              <div className="font-mono text-2xl font-bold text-primary">{projects.length}</div>
+              <div className="font-mono text-2xl font-bold text-primary">{info.projects.length}</div>
               <div className="font-mono text-xs text-muted-foreground">Proyectos</div>
             </div>
             <div className="border border-border p-4">
               <div className="font-mono text-2xl font-bold text-primary">
-                {new Set(projects.flatMap(p => p.tags)).size}
+                {new Set(info.projects.flatMap(p => p.technologies)).size}
               </div>
               <div className="font-mono text-xs text-muted-foreground">Tecnologías</div>
             </div>
@@ -63,7 +64,7 @@ const ProjectsPage = () => {
 
           {/* Project grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, i) => (
+            {info.projects.map((project, i) => (
               <ProjectCard key={project.title} project={project} index={i} />
             ))}
           </div>

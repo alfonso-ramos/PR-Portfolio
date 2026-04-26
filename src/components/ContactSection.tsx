@@ -2,16 +2,16 @@ import { motion } from "framer-motion";
 import { MagneticElement } from "./FancyAnimations";
 
 const contactAscii = `
-╔══════════════════════════════╗
-║                              ║
-║   ┌──┐  CONTACTO  ┌──┐     ║
-║   │▓▓│  ────────  │▓▓│     ║
-║   └──┘             └──┘     ║
-║                              ║
-║   > Hablemos de tu          ║
-║     próximo proyecto_       ║
-║                              ║
-╚══════════════════════════════╝
+╔══════════════════════════╗
+║                          ║
+║   ┌──┐  CONTACTO  ┌──┐   ║
+║   │▓▓│  ────────  │▓▓│   ║
+║   └──┘            └──┘   ║
+║                          ║
+║   > Hablemos de tu       ║
+║     próximo proyecto_    ║
+║                          ║
+╚══════════════════════════╝
 `;
 
 const socialLinks = [
