@@ -9,14 +9,7 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   vite: {
     build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'framer-motion': ['framer-motion'],
-          }
-        }
-      }
+      cssCodeSplit: true
     }
   }
 });
