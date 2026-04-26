@@ -59,7 +59,7 @@ const AboutSection = () => {
               <div className="relative overflow-hidden rounded-xl border border-border/30 bg-background">
                 <img 
                   className="w-full aspect-square object-cover" 
-                  src="/assets/images/me.png" 
+                  src="/assets/images/me.webp" 
                   alt="Profile" 
                 />
               </div>

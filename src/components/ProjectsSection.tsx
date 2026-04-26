@@ -1,36 +1,5 @@
 import { motion } from "framer-motion";
-import { AsciiFrame } from "./AsciiArt";
 import { info } from "../data/info";
-
-// export const projects = [
-//   {
-//     title: "PatternKit",
-//     description: "Laboratorio abierto para aprender y divulgar patrones de diseño y estructuras de datos con rigor visual.",
-//     tags: ["React", "TypeScript", "Vercel"],
-//     github: "https://github.com/alfonso-ramos/patternkit",
-//     live: "https://patternkit.vercel.app/",
-//     date: "Nov 2025",
-//     image: '../../public/assets/images/adpinpatients.png'
-//   },
-//   {
-//     title: "Aprende Coreano",
-//     description: "Plataforma interactiva para aprender coreano con lecciones estructuradas y ejercicios prácticos.",
-//     tags: ["React", "Netlify", "CSS"],
-//     github: "https://github.com/alfonso-ramos/learn-korean",
-//     live: "https://learn-korean.netlify.app/",
-//     date: "2024",
-//     image: '../../public/assets/images/adpinpatients.png'
-//   },
-//   {
-//     title: "Social Media App",
-//     description: "Red social fullstack con autenticación, publicaciones, y sistema de interacciones en tiempo real.",
-//     tags: ["MERN", "MongoDB", "Express"],
-//     github: "https://github.com/alfonso-ramos",
-//     live: "#",
-//     date: "2024",
-//     image: '../../public/assets/images/adpinpatients.png'
-//   },
-// ];
 
 export const ProjectCard = ({ project, index }: { project: typeof info.projects[0]; index: number }) => (
   <motion.div

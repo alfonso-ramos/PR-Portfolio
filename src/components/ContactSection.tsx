@@ -1,5 +1,7 @@
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { MagneticElement } from "./FancyAnimations";
+
+const MagneticElement = lazy(() => import("./FancyAnimations").then(m => ({ default: m.MagneticElement })));
 
 const contactAscii = `
 ╔══════════════════════════╗
@@ -65,7 +67,7 @@ const ContactSection = () => {
           className="flex flex-wrap justify-center gap-6"
         >
           {socialLinks.map((link) => (
-            <MagneticElement key={link.name}>
+            <Suspense key={link.name} fallback={
               <a
                 href={link.url}
                 target="_blank"
@@ -75,7 +77,19 @@ const ContactSection = () => {
                 <span className="text-primary text-lg">{link.icon}</span>
                 {link.name}
               </a>
-            </MagneticElement>
+            }>
+              <MagneticElement>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-base border border-border px-8 py-4 text-muted-foreground hover:border-primary hover:text-primary transition-colors hover:box-glow-primary flex items-center gap-3"
+                >
+                  <span className="text-primary text-lg">{link.icon}</span>
+                  {link.name}
+                </a>
+              </MagneticElement>
+            </Suspense>
           ))}
         </motion.div>
 

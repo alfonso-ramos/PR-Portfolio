@@ -1,12 +1,21 @@
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import AsciiArt, { AsciiDivider } from "./AsciiArt";
-import { AsciiRain, TextReveal, AsciiMarquee, MorphingAscii, MagneticElement } from "./FancyAnimations";
+import AsciiArt from "./AsciiArt";
+
+// Lazy load heavy animations
+const AsciiRain = lazy(() => import("./FancyAnimations").then(m => ({ default: m.AsciiRain })));
+const TextReveal = lazy(() => import("./FancyAnimations").then(m => ({ default: m.TextReveal })));
+const AsciiMarquee = lazy(() => import("./FancyAnimations").then(m => ({ default: m.AsciiMarquee })));
+const MorphingAscii = lazy(() => import("./FancyAnimations").then(m => ({ default: m.MorphingAscii })));
+const MagneticElement = lazy(() => import("./FancyAnimations").then(m => ({ default: m.MagneticElement })));
 
 const HeroSection = () => {
     return (
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg noise-overlay">
         {/* ASCII Rain background */}
-        <AsciiRain />
+        <Suspense fallback={null}>
+          <AsciiRain />
+        </Suspense>
 
         {/* Floating ASCII decorations */}
         <motion.div
@@ -28,7 +37,9 @@ const HeroSection = () => {
         <motion.div
             className="absolute top-1/3 right-24 hidden lg:block"
         >
-            <MorphingAscii />
+            <Suspense fallback={null}>
+                <MorphingAscii />
+            </Suspense>
         </motion.div>
 
         <motion.div
@@ -76,7 +87,9 @@ const HeroSection = () => {
             className="font-mono text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-4"
             >
             <span className="text-primary font-semibold">$</span>{" "}
-            <TextReveal text="Mexican Web Developer · Coffee Enthusiast · Code Craftsman" delay={0.8} />
+            <Suspense fallback={<span>Mexican Web Developer · Coffee Enthusiast · Code Craftsman</span>}>
+                <TextReveal text="Mexican Web Developer · Coffee Enthusiast · Code Craftsman" delay={0.8} />
+            </Suspense>
             </motion.div>
 
             <motion.div
@@ -94,22 +107,40 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-            <MagneticElement>
+            <Suspense fallback={
                 <a
                 href="#projects"
                 className="font-mono text-base border-2 border-primary text-primary px-8 py-3 hover:bg-primary hover:text-white transition-all duration-300 hover:box-glow-primary inline-block"
                 >
                 {">> VER PROYECTOS"}
                 </a>
-            </MagneticElement>
-            <MagneticElement>
+            }>
+                <MagneticElement>
+                    <a
+                    href="#projects"
+                    className="font-mono text-base border-2 border-primary text-primary px-8 py-3 hover:bg-primary hover:text-white transition-all duration-300 hover:box-glow-primary inline-block"
+                    >
+                    {">> VER PROYECTOS"}
+                    </a>
+                </MagneticElement>
+            </Suspense>
+            <Suspense fallback={
                 <a
                 href="#contact"
                 className="font-mono text-base border border-border text-muted-foreground px-8 py-3 hover:border-primary hover:text-primary transition-all duration-300 inline-block"
                 >
                 {":: CONTACTO ::"}
                 </a>
-            </MagneticElement>
+            }>
+                <MagneticElement>
+                    <a
+                    href="#contact"
+                    className="font-mono text-base border border-border text-muted-foreground px-8 py-3 hover:border-primary hover:text-primary transition-all duration-300 inline-block"
+                    >
+                    {":: CONTACTO ::"}
+                    </a>
+                </MagneticElement>
+            </Suspense>
             </motion.div>
 
             <motion.div
@@ -118,7 +149,9 @@ const HeroSection = () => {
             transition={{ delay: 1.5, duration: 1 }}
             className="mt-20"
             >
-            <AsciiMarquee />
+            <Suspense fallback={null}>
+                <AsciiMarquee />
+            </Suspense>
             </motion.div>
         </div>
         </section>
